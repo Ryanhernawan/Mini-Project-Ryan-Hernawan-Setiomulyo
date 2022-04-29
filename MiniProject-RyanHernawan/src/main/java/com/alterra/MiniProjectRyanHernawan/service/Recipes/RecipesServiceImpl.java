@@ -17,6 +17,13 @@ public class RecipesServiceImpl implements RecipesService{
     }
 
     @Override
+    public Recipes getRecipesById(Long id) {
+        Recipes recipes = new Recipes();
+        recipes = recipesRepository.findById(id).orElse(null);
+        return recipes;
+    }
+
+    @Override
     public Recipes CreateNewRecipes(Recipes recipes) {
 
         return recipesRepository.save(recipes);

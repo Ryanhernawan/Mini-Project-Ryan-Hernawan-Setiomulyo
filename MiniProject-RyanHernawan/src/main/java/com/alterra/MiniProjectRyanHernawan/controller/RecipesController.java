@@ -4,6 +4,7 @@ import com.alterra.MiniProjectRyanHernawan.model.BaseResponse;
 import com.alterra.MiniProjectRyanHernawan.model.Recipes;
 import com.alterra.MiniProjectRyanHernawan.model.User;
 import com.alterra.MiniProjectRyanHernawan.service.Recipes.RecipesService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/recipes")
+@AllArgsConstructor
 public class RecipesController {
 
-    @Autowired
-    private RecipesService recipesService;
+    private final RecipesService recipesService;
 
     @GetMapping
     public ResponseEntity<?> getAllRecipes(){
@@ -27,29 +28,40 @@ public class RecipesController {
         return ResponseEntity.ok(baseResponse);
     }
 
+    @GetMapping("/{recipes_id}")
+    public ResponseEntity<?> getRecipesById(@PathVariable("id") Long id){
+        BaseResponse<Recipes> baseResponse = new BaseResponse<>();
+        baseResponse.setSuccess(true);
+        baseResponse.setMessage("Success");
+        baseResponse.setData(recipesService.getRecipesById(id));
+        return ResponseEntity.ok(baseResponse);
+    }
+
+
     @PostMapping
-    public BaseResponse<Recipes> CreateNewRecipes(@RequestBody Recipes recipes){
+    public ResponseEntity<?> CreateNewRecipes(@RequestBody Recipes recipes){
         BaseResponse<Recipes> baseResponse = new BaseResponse<>();
         baseResponse.setSuccess(true);
         baseResponse.setMessage("Success");
         baseResponse.setData(recipesService.CreateNewRecipes(recipes));
-        return baseResponse;
+        return ResponseEntity.ok(baseResponse);
     }
 
-    @PutMapping("/{id}")
-    public BaseResponse<Recipes> UpdateRecipes(@PathVariable("id") Long id, @RequestBody Recipes recipes) {
+    @PutMapping("/{recipes_id}")
+    public ResponseEntity<?> UpdateRecipes(@PathVariable("id") Long id, @RequestBody Recipes recipes) {
         BaseResponse<Recipes> baseResponse = new BaseResponse<>();
         baseResponse.setSuccess(true);
         baseResponse.setMessage("Success");
         recipes.setId(id);
         baseResponse.setData(recipesService.UpdateRecipes(recipes));
-        return baseResponse;
+        return ResponseEntity.ok(baseResponse);
     }
-
 
     @DeleteMapping("/{recipes_id}")
     public String deleteRecipesById(@PathVariable("id") Long id){
         recipesService.deleteRecipesById(id);
         return "Success";
     }
+
+
 }
