@@ -11,19 +11,17 @@ import java.util.Date;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "recipes_ingredients")
-public class RecipesIngredients {
-
+@Table(name = "ingredients")
+public class Ingredients {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long qty_gram;
+    private String name;
 
     @CreatedDate
     private Date created_at;
     @LastModifiedDate
     private Date updated_at;
-
 
 }

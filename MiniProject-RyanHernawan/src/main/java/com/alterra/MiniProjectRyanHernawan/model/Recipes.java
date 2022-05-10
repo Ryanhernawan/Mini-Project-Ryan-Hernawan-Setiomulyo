@@ -18,9 +18,9 @@ public class Recipes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", referencedColumnName = "id")
-//    User user;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    Category category;
 
 
 

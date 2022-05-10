@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CategoryController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @GetMapping
     public ResponseEntity<?> getAllCategory(){
@@ -44,7 +44,7 @@ public class CategoryController {
         return ResponseEntity.ok(baseResponse);
     }
 
-    @PutMapping("/{category_id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateCategory(@PathVariable("id") Long id, @RequestBody Category category){
         BaseResponse<Category> baseResponse = new BaseResponse<>();
         baseResponse.setSuccess(true);
