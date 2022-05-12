@@ -29,7 +29,7 @@ public class RecipesController {
     }
 
     @GetMapping("/{recipes_id}")
-    public ResponseEntity<?> getRecipesById(@PathVariable("id") Long id){
+    public ResponseEntity<?> getRecipesById(@PathVariable("recipes_id") Long id){
         BaseResponse<Recipes> baseResponse = new BaseResponse<>();
         baseResponse.setSuccess(true);
         baseResponse.setMessage("Success");

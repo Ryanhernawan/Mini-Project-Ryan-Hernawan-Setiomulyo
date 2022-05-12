@@ -22,6 +22,10 @@ public class Recipes {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    User user;
+
 
 
     private String title;

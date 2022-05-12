@@ -27,7 +27,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{category_id}")
-    public ResponseEntity<?> getCategoryById(@PathVariable("id") Long id){
+    public ResponseEntity<?> getCategoryById(@PathVariable("category_id") Long id){
         BaseResponse<List<Category>> baseResponse = new BaseResponse<>();
         baseResponse.setSuccess(true);
         baseResponse.setMessage("Success");
