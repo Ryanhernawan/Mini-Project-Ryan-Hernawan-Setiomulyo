@@ -18,13 +18,13 @@ public class RecipesIngredients {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "recipes_id", referencedColumnName = "id")
-    Recipes recipes;
-
-    @ManyToOne
-    @JoinColumn(name = "ingredients_id", referencedColumnName = "id")
-    Ingredients ingredients;
+//    @ManyToOne
+//    @JoinColumn(name = "recipes_id", referencedColumnName = "id")
+//    Recipes recipes;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "ingredients_id", referencedColumnName = "id")
+//    Ingredients ingredients;
 
     private Long qty_gram;
 
