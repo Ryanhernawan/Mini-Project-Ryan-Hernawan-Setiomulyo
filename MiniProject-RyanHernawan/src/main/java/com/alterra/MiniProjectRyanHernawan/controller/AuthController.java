@@ -1,5 +1,7 @@
 package com.alterra.MiniProjectRyanHernawan.controller;
 
+import com.alterra.MiniProjectRyanHernawan.model.BaseResponse;
+import com.alterra.MiniProjectRyanHernawan.model.User;
 import com.alterra.MiniProjectRyanHernawan.payload.TokenResponses;
 import com.alterra.MiniProjectRyanHernawan.payload.UsernamePassword;
 import com.alterra.MiniProjectRyanHernawan.service.Authentication.AuthService;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -42,6 +45,15 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<?> getAllUsers(){
+        BaseResponse<List<User>> baseResponse = new BaseResponse<>();
+        baseResponse.setSuccess(true);
+        baseResponse.setMessage("Success");
+        baseResponse.setData(authService.getAllUsers());
+        return ResponseEntity.ok(baseResponse);
     }
 
     @DeleteMapping("/{id}")

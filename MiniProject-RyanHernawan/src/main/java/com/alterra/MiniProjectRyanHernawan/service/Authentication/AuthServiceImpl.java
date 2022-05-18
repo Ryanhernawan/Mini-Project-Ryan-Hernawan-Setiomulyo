@@ -16,6 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Log4j2
 @Service
 @RequiredArgsConstructor
@@ -25,6 +27,11 @@ public class AuthServiceImpl implements AuthService{
     private final UserRepository userRepository;
     private  final AuthenticationManager authenticationManager;
     private  final JwtProvider jwtProvider;
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     @Override
     public User register(UsernamePassword req) {
@@ -56,6 +63,8 @@ public class AuthServiceImpl implements AuthService{
             throw new RuntimeException(e.getMessage(), e);
         }
     }
+
+
 
     @Override
     public void deleteUserById(Long id) {
