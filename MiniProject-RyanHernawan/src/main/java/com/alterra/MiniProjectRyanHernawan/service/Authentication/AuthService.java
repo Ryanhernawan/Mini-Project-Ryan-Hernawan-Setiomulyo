@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface AuthService {
     List<User> getAllUsers();
+    User getUserById(Long id);
     User register(UsernamePassword req);
     TokenResponses generateToken(UsernamePassword req);
     void deleteUserById(Long id);

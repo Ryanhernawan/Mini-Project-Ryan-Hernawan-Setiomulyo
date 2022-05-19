@@ -19,13 +19,13 @@ public class Recipes {
     private Long id;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "category_id", referencedColumnName = "id")
-//    private Category category;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", referencedColumnName = "id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
 
 

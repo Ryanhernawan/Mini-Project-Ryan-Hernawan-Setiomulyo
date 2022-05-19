@@ -42,7 +42,7 @@ public class RecipesIngredientController {
         return ResponseEntity.ok(baseResponse);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateRecipesIngredient(@PathVariable("id") Long id, @RequestBody RecipesIngredients recipesIngredients){
         BaseResponse<RecipesIngredients> baseResponse = new BaseResponse<>();
         baseResponse.setSuccess(true);
@@ -53,7 +53,7 @@ public class RecipesIngredientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteRecipesIngredientById(Long id){
+    public ResponseEntity<?> deleteRecipesIngredientById(@PathVariable("id") Long id){
         service.deleteRecipesIngredientById(id);
         return ResponseEntity.ok("Success");
     }

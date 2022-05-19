@@ -34,12 +34,21 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
+    public User getUserById(Long id) {
+        User user = new User();
+        user = userRepository.findById(id).orElse(null);
+        return user;
+    }
+
+    @Override
     public User register(UsernamePassword req) {
         User user = new User();
         user.setUsername(req.getUsername());
         user.setPassword(passwordEncoder.encode(req.getPassword()));
         return userRepository.save(user);
     }
+
+
 
     @Override
     public TokenResponses generateToken(UsernamePassword req) {

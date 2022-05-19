@@ -8,6 +8,7 @@ import com.alterra.MiniProjectRyanHernawan.service.Authentication.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -21,6 +22,8 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService authService;
+
+
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UsernamePassword req){
@@ -53,6 +56,15 @@ public class AuthController {
         baseResponse.setSuccess(true);
         baseResponse.setMessage("Success");
         baseResponse.setData(authService.getAllUsers());
+        return ResponseEntity.ok(baseResponse);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable("id") Long id){
+        BaseResponse<List<User>> baseResponse = new BaseResponse<>();
+        baseResponse.setSuccess(true);
+        baseResponse.setMessage("Success");
+        baseResponse.setData(List.of(authService.getUserById(id)));
         return ResponseEntity.ok(baseResponse);
     }
 
