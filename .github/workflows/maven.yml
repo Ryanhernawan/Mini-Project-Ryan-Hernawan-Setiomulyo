@@ -24,6 +24,4 @@ jobs:
     - name: Build with Maven
       working-directory : MiniProject-RyanHernawan
       run: mvn -B package --file pom.xml
-    - name: Execute Jar File
-      working-directory : MiniProject-RyanHernawan
-      run: sudo kill -9 'sudo lsof -t -i:80' & sudo java -jar
+    
